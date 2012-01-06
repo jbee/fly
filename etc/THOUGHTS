@@ -1,0 +1,40 @@
+# 	Es ist problematisch wenn blöcke optionale Leerzeilen am Ende erlauben, da dann kein klares Ende 
+	und somit auch kein klarer Anfang des nächsten feststeht. Das kompliziert das Parsen erhablich.
+
+# 	Der Parser sollte arbeiten wie beim JSON - wenn man nicht weiß wo man ist, kommt der 
+	allgemeinste Parser, sobald dieser bestimmt hat, um welchen Block es sich handelt, wird in CPS
+	Manier der entsprechende Block-Parser verwendet.
+
+#	Block-Parser werden für ein Block-Start registriert (bei Fabrik). Es sind durchaus 
+	Doppelbelegungen möglich. Dann wird Zeichen für Zeichen an alle Kandidaten gereicht, welche 
+	dann prüfen müssen, ob es sich immernoch um diesen Block handeln kann. 
+
+# 	Innerhalb eines Block-Pasers kann es Inline-Parser geben für fett/kursiv etc. 
+
+#	Blöcke haben eine Gewichtung, so dass aus einer Liste von Blöcken dessen Baum-Struktur 
+	bestimmt werden kann. Ist die Gewichtung des nachfolgenden Blocks 
+	* geringer => ist dies ein Kind,
+	* gleich => nachfolger mit selben Parent
+	* größer => wird der Wert rekursiv mit den des Parent verglichen
+	Bei geschickter Wahl der Gewichtungen kann so der entstehende Baum auch Schachtelungen 
+	auslassen, wodurch die Granularität gesteuert werden kann.
+	
+# 	Der Dokument-Typ sollte ganz am Anfang eines Dokumentes definiert werden können. Daraus ergibt 
+	sich dann die Komposition des Parsers, wodurch sonder-Verhalten für 1. Überschriften etc 
+	möglich werden
+
+# 	Es sollte ein Markup geben, um Blöcke als "Entfernt" zu markieren etwa <<<< am Anfang und >>>>
+	am Ende
+	
+#	Es ist unschön, wenn die 1. Zeile eines Paragraphs eingerückt werden muss, damit es nicht als
+	Überschrift gilt. Hier sollte es eine bessere Erkennung für Überschriften geben. 
+	Etwa:
+	* Es ist eine Überschrift wenn die ersten 2 Wörter oder alle Wörter der Zeile in 
+	Großbuchstaben stehen.
+	* Wenn der 1. Satz mit einem Doppelpunkt endet. (schwierig)
+	* Headline-Control-Code (Space) wird verwendet
+	* Es ist nur 1 Zeile und diese wird von einer Dash-Line der selben Startpositon gefolgt.
+	* Es wird gar kein TAB verwendet 
+
+#	So problemeatisch sind optionale Leerzeilen am Ende wohl doch nicht, wenn man diese im
+	beendeted und im nachfolgenden Block als eine Art "Shared"-Anzahl versteht. 

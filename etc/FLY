@@ -1,0 +1,503 @@
+--------------------------------------- ARTICLE ----------------------------------------------------
+
+	HOW A PLAIN TEXT DOCUMENT SHOULD LOOK LIKE
+ 	EVEN IF IT USES A MARKUP LANGUAGE TO STRUCTURE IT
+	
+	
+	
+	
+	
+	I guess first thing to solve are headlines and text blocks a.k.a. paragraphs.
+	What does make a headline a chapter, a section or a paragraph heading ?
+	It has to do with the optical break it creates. A bigger break means a bigger structure is
+	being introduced. Whitespace does obviously have a important role.
+	
+_	________________________________________________________________________________________
+
+
+
+
+	A SHORT INTRODUCTION OF SYNTAX
+	
+	
+	''Ateno'' allows you to write down your documentation like there is no markup which creates
+	a nice view later one. The source should already look as readable and clear as possible. 
+	  It should show the structure of your document as well as the different types of
+	content like headlines, paragraphs, list, tables or code-block to just mention the most common.
+	  
+	  But the readability is not the goal. It's the way to reach the goal: To document as good and
+	fast as possible without the need to remember weird markup sequences that clutter up all over
+	the place and makes you finally spending hours to find out how to do the easiest things when 
+	combining markup directives. 
+	  I think to reach that there is just one way: The markup has to be deeply intuitive. 
+	That means in the best case you didn't even knew you typed markup - but you did when trying
+	to use the few possibilities simple monospaced texts offer to express yourself quite clear to
+	the reader. 
+	
+	With this in mind one big difference between ''Ateno'' and other markup languages is not
+	surprising any longer: The markup of ''Ateno'' is often ambiguous. It has to since we all
+	would do things a little different but mean the same thing. So we can express ourself in the
+	biggest range technically possible. Note that the ambiguousness doesn't mean the same markup 
+	could mean too things. We can just choose different ways to tell the same story.
+	
+	
+	
+	FROM THE HEADLINE DOWN TO PARAGRAPHS
+	
+	A big structure like a chapter is introduced by 4-6 blank lines prepended to the heading and
+	followed by any number of blank lines greater 1. So you can easily emphasize it as much as
+	you think it needs to.
+	In general the text written in the source document will not break in the view where is does
+	in the source (behaves like in HTML). You have to enforce line-breaks by mark their position. 
+  	  Just indent a line by at least two spaces. You can put as much as you desire to. This will
+  	make the view also show a new line at that position in the text.
+
+	  To do a complete new text block (paragraph) use a blank line before the text. Also
+	indent its first line by at least 2 spaces (no tabs!) to distinct it from a heading as we will 
+	see later on. You can also use this space indent to enforce new lines. The reason 1 space is
+	just a space and doesn't do same trick is that you might have pasted texts that break in the
+	middle a sentence (in source) and the space between two words of that sentence is placed in 
+	front of the first word of the new line. I think that's shouldn't have any effect.
+	  This is indeed a break in the block. Since there is no blank line before this just
+	causes to start at a new line.
+
+	One may argue that a not indented block with more than too lines not appears as a headline to
+	a human. And you are tight. If a block of text has more than 2 lines in the source it is
+	automatically a paragraph. If you want to do a headline with more than 2 lines use one of
+	the unambiguous markups (e.g. put spaces as control code). So in fact it is not nessessay to
+	indent this block nor the one above. But its still good style to do so since it makes your 
+	text looks even more readable. A single line separated by at least one blank line above and 
+	below is ALWAYS a headline by default. If you meant text (widow alert) you have to indent it
+	as we will see later.
+
+	A SECTION TO TALK ABOUT SOMETHING ELSE
+	
+	Make 1, 2 or 3 blank lines to make next line be a section heading. That's it. I prefer 3 since
+	that gap is really creates a optical break. In difference to chapters a section must be 
+	followed by a single blank line.
+	
+
+	WHAT IS THAT ?
+	  Normally a blank line is followed by the heading. Omit it makes the heading stick to the 
+	following text block. That is what makes it a paragraph headline. It it also necessary to 
+	prepend 1-2 blank lines to it. So 1-2 empty lines could be a section or a paragraph depending 
+	on if there is any blank line after it. Note also that if you use paragraph headlines you also 
+	have to indent the following text block by at least one space to indicate that it is not the
+	second line of the headline itself.  
+	
+	IS IT ALL --- JUST 3 LEVELS ?
+	  Well...yes and no. I deeply believe that humans cannot really keep track on more that 3 
+	levels of structured text. But I also agree that there are good reasons to do more than 3.
+	  The solution of this conflict is simply not to introduce more than 3 level at a time.
+	What is the secret ? Do just 3 levels in one file. If you want to do more, include another
+	file by nesting its content under the current depth of structure instead of include them on
+	same level. In fact both is possible and will be described later. 
+	
+	WHAT ABOUT OTHER TEXT-TYPES ?
+	  It doesn't matter what kind of node is following the heading to make it a paragraph heading.
+	The important thing is to not do a blank line. 
+		
+		
+	
+	STRUCTURING DOCUMENTS
+	
+	We learned the basics of headings and text blocks which is the flesh of each document. Now we 
+	step back and focus on more general structure elements of documents.
+	
+	
+	PAGES
+	  In general there is no need and/or use to define where a page break appears since this is heavily 
+	connected to a view's layout. A document is in fist place a logical structured piece of information.
+	So page breaks are computed or given by the structure and style used to display that piece of information.
+	Anyway. If you want to enforce a page break use the underscore control code _ followed by a
+	optional tab and/or any number of additional underscores like this:
+	
+_	___________________________________________________________________________________________
+	
+	  You also have to add some (no matter how many) blank line before AND after. I highly 
+	recommend to 'paint' a line all over the page width and not to omit a large number of 
+	underscores. It is expected, that you use a 60-80 character wide editor window with a 
+	monospace font.
+	
+	  Some might argue that this is a pretty long markup and fairly unusable. Yep! You get it. 
+	It is designed to not use it for the reasons mentioned above. But if you want to use it anyway
+	it nearly looks like what you get. A page break.
+	
+	PAGE BREAK ADVICE
+	  Beside a forced page break you can also do an advice to the layout where you think a proper
+	position would be. Therefore you put the strength of your advice in percent right after the
+	page break control code followed by an % sign like in this example:
+
+_20%	___________________________________________________________________________________________
+
+	  The layout will try to fill pages and follow your strongest advice. 20% is a very weak one. 
+	99% would be the strongest possible. 100% is needless to use since the normal page break 
+	without a strength is that 100% break. 
+	  If you make use of this technique it is normal to place some page breaks kind of close with
+	different strengths. 
+	
+	HORIZONTAL LINES
+	  Look nearly like page breaks since the are very similar. You can use minus or underscore
+	and have to place at least 40 of them roughly centered like this:
+	  			-------------------------------------------------
+	In contrast to page breaks there is no need to add blank lines before or after. If you put a
+	blank line after remind to indent your text blocks to distinct from a paragraph headline.
+				_________________________________________________
+			
+	  Pay attention to the indentation to not make this appear as a headline. Also note that you
+	have to use at least one space in front of your horizontal line. You can put more if desired
+	as long as you line keeps at least 40 characters width. But be careful with tabs there. 
+	It might do no difference but it can if you are inside nested blocks like bullet lists.
+	
+	
+	FOOTNOTES
+	  A footnote is logically a quite complicated element. The reason is that footnotes have to appear 
+	on the page where the reference to a footnote hint is placed. So there are two positions in a
+	documents flow that concern the same footer. A reference occur somewhere in the text that
+	should be explained in detail which is done in the following footnote. So both should really be
+	on the same page. Otherwise it is hard to read the explanations given by it. Thinking of the
+	automatic layout and different styles that may be used this might get a nightmare to solve it.
+	
+	  Anyway. Here is an example of a reference ^[a]. It gets the alias 'a' which is
+	surrounded by brackets prefixed by a roof (CIRCUMFLEX ACCENT). The description can follow 
+	anywhere after this by introduce a footnote by:
+	
+	________________________
+[a]	What 'a' is. The above line may be used but is optional in case of a reference if - and only
+	if - you place the [a] at the control code position ('[' is the code). You may also put it
+	at the start of the description. But than the line opens the footnote section is mandatory. 
+	Here is such a example that works quite well since we place the footnote line:
+	
+	[b] What 'b' is. In this case you are forced to put a blank line in front of it (if its not 
+	the first after the footnote line) to make it pop nicely to our eyes. 
+	  This is not necessary if you use the control code variant since this already is well 
+	recognizable because of its position at the very left. Note that the footnote line has to
+	start with its first underscore very left of the text segment. 
+	It can have a length up to 40 (half editor) underscores. My advice is to choose around 25 
+	which is a bit longer than a quarter of the editors width.
+
+	  The footnote line is also useful to do footnote content that is not part of a(ny) reference 
+	description like this.
+	  Note that you can there has to be at least 1 blank line before. There can be more before and
+	after if you feel that this looks more readable to you. 
+	  If you use 4 to 40 underscores it will introduce the footnote that will not end until
+	you use a structure element, that is pretty clear not content of a footnote like headings.
+	Here is another use of the new page markup: You can use it to end your footnote if you
+	want to continue with just text on the following page like shown in this example:
+	
+_	________________________________________________________________________________________
+	
+	  This is the first text block on a new page. Even if it is possible you shouldn't use this
+	without a very good reason. Normally a new page should start with some kind of heading and
+	in that case you should not place that new page divider to keep automatic layout as nice as
+	possible. But where to place your footnote in the markup ? I think there are two things to care
+	about. First if used for reference and description they should also be close enough to each 
+	other in your markup to easily read both in the same time (one editor page). Second reason is
+	a technical restriction: References have to get an alias name like 'a' in our example. Since
+	they are restricted to one lower case letter for footnote references you are limited to 26.
+	This might not be enough for a hole document but is surely enough for a page. So if you run 
+	out of names place a footnote line. The namespace ends here and new one will open up after. 
+	Thereby you can easily place a lot of references all over your document.
+
+	  Note that placing a footnote in your markup does not force the end of the current page at that 
+	position (therefore use the page break markup directly after). It just closes the namespace in
+	first place. Where the footnote is really placed later is up to the automatic layout. But it is
+	guaranteed that reference and the footnote holding the associated description are one the same 
+	page. Thereby more than one footnote in your markup can appear as one in later layout. In fact
+	the automatic layout will try to merge as many footnotes as possible to improve readability.
+	  So footnotes placement is also a question of your own preferred source document style. If you 
+	like a footnote can always directly follow the text block its reference is contained it. 
+	
+	  I think the footnote solution is a fairly good trait between the requirements of source and 
+	view.   
+	
+	
+	
+	SNYTACTIC TEXT SUGAR
+	
+	We have seen the basics of text and headings. There are some more ways to allow formatting 
+	your source quite nice and keep the nicest automatic layout possible. 
+		
+	  Another way to emphasize you headlines even more is to use the headline control code
+	which is simply a space (followed by any number of whitespace). You can	indent your headlines 
+	as little or much as you want to.
+   
+   GET SOME ATTENTION
+	If you make use of this headline markup you should indent all its lines on the same level or use more 
+	spaces for smaller structures. For example indent chapters by 1, sections by 2 and paragraphs
+	by 3 or all by 1,2 or 3 (or even more). The right choice depends mainly on the tab width and 
+	what style you think is most readable (in source).
+	  If you are using the headline control code (space) than you don't have to indent the 
+	successive text block. Because of that you are force to use the headline control code also
+	for additional lines belong to that headline. If you want any multi-line heading to break
+	right like in the source indent the 2nd or 3rd lines by 2 more spaces than the 1st like we
+	do to cause line-breaks in text blocks.
+	
+   GET EVEN MORE ATTENTION
+   -----------------------
+   	All types of heading may get an additional line out of minus signs in the line straight below.
+   	That has no effect to the headings level nor does it underline it in the view. This is still
+   	up to the style chosen in view. But you do not have to indent your text block in case of 
+   	paragraph headings because it is obvious where the headline ends and that a text (or any other
+   	structure) will follow.
+   	  You should underline all your headings or none. Everything else can end up giving a smaller
+   	structure more attention when scanning over your source text. A compromise may be to use the
+   	underline only for bigger structure headlines. That makes them even more strong. It's nothing
+   	wrong with that if you like it.  
+   	  The underline has to have at least 2 minus characters otherwise it's no line and therefore
+   	another control code as we will see later on.
+   	
+   ------------------
+   AND MORE ATTENTION
+   ------------------
+	You can also surround your headlines with dashed lines. They do not count as blank lines in 
+	terms of the headlines kind. So this one above is a paragraph headlines since it sticks to the
+	text below. 
+
+START WITHOUT TAB OR CONTROL CODE
+	You can also skip control code and tab and start with a upper case letter. This also makes
+	the line a headline. which depends on blank lines before and after (as always).
+
+	UPPER CASE HEADLINES
+	  As you noticed I use upper case headlines all the time. I think the make the source more 
+	readable. In English you don't have any problems to know which first letters of the upper case
+	words have to be lowered since all words of a headline are using upper case in English. But
+	other languages are not so uniform in this question. To be able to upper case all your 
+	headline AND tell which words to start with a lower case letter you can:
+	
+	START tHE lOWER WORDS wITH lOWER CASE
+	  will create "Start the lower Words with lower Case" in the view (if not general upper case
+	text transformation is used as style). I think this is the best way to do it. You can also:
+	
+	
+	AMBIGUOUS BLANK LINES ?
+	  There are situations where blank lines might appear ambiguous since for bigger structures 
+	there is no exact number of blank lines to place before and after headings. That is not the
+	case. The source is interpreted from top to button. If a headings fulfills the conditions of
+	the biggest headline possible (which will require most blank lines after) all mandatory blank
+	lines after it will be counted to its markup. The optional ones will be counted to any
+	directly following headline if the rest of the markup makes it such a headline. Otherwise they
+	become this optional blank line. 
+	  You can also put a hole bunch of 'illegal' blank lines after a headline as long the first 
+	not blank line uses any kind of special structure that is introduced by a control code so 
+	there is no problem to tell what is meant. 
+	
+	  	
+	FLUENT TEXT IN MULTIPLE SOURCE BLOCKS
+	  Sometimes you want to write single text blocks that are shown as one in the view but appear
+	somehow divided in the source to make some comments to it or something like that. Therefore
+	a block can be intermittented in the source using the open bracket ( control code
+(	
+	and leave the rest of that line empty. That will show a break in source that is not shown in
+	the view. This trick can also be used to tweak your view without change your source so much.
+	If you are not sure where to do a new paragraph you can do them all by putting an empty line.
+	Later you add the ( everywhere you didn't what a new paragraph to appear. 
+
+
+	WORD SPACE FAILOVER
+	  I mentioned several times that the text of your paragraphs does not have to look like in
+	your source. Mainly this points out to the fact the word-wrap is part of an automatic layout.
+	Trough this it can happen, that you end a line in the source with a line-break and continue
+	very left of the text. The source didn't has a space between the last word and the fist in
+	the line after. This would cause them to stick together in the view in most markup systems.
+	That's different in ''Ateno''! The worlds look as they should divided by a space. So there
+	is no need to find yourself indenting a word by one space at the beginning of a line in your
+	source. If you want words to stick together simply put them on one line.  
+	
+
+
+	PREFORMATTED OR CODE BLOCK
+
+	A good support for preformatted block is very very important since mostly markup languages are
+	used by 'experts' to document their API, ideas or whatever. I find it most important that
+	you can easily past any kind of stuff right as it is in your markup to just show it as it is.
+	  Such a preformatted block is opened and closed by at least 40 underscores like this:
+	________________________________________________
+	
+	No markup between the underscores 
+	________________________________________________
+
+	Be careful not to put any whitespace in front of the underscores. That would make them become 
+	horizontal lines. You also need to put a blank line after the open line. We will see details 
+	later on. You should also accustom to use different open and close length to be able
+	to see very easy if it is a opening or closing sequence. But thats up to you.
+	___________________________________________________________________________________
+	
+	Open is much longer and thereby its easy to tell which is open and close
+	___________________________________________________________
+
+	You often find yourself left with	a poor support for simple code blocks just allow to 
+	toggle interpretation of markup completely. This is often not enough to satisfy the needs of
+	good documentation. Often you want or need to point out to words, lines or positions in a
+	preformatted block. You want to highlight em in some way. That shouldn't be to difficult or
+	even impossible to do. So here is how it is done in ''PurelyIT'':
+	
+	__________________________________________________________________
+1
+		@Override
+		public final int countBy( IEquality<? super T> equality, T e ) {
+			return anyBy( equality, e )
+				? 1
+				: 0;
+		}
+	__________________________________________________________________
+
+
+	MARKS
+	Marks can be used to point at a specific line of a listing. They use the open square bracket [ 
+	as control code followed by a underscore _ any number (1-9) again an underscore _ and finally 
+	by the right arrow >. You may indent a mark by spaces (so that space is in fact the control code).  
+
+	__________________________________________________________________
+1
+		@Override
+		public final int countBy( IEquality<? super T> equality, T e ) {
+[_1_>			return anyBy( equality, e )
+				? 1
+				: 0;
+		}
+	__________________________________________________________________
+
+	A mark like that in the example above can be referred to later on in the text by the sequence
+	[_1_>. As use can see this is the same markup just using a underscore as fill-character.
+
+
+
+
+	
+	
+	EARLY DRAFT MARKUPS
+
+
+
+
+
+	TABLES
+	
+	
+	Another fairly complicated structure in a plain text file. You can use all those fancy special
+	characters to do ASCII-art tables that look like tables in the source. But this steals a lot
+	of time from being productive while writing documentation. So here's my table approach: 
+
+?	----------------------------------------------------------------------------------------
+A:	The header of column A
+B:	The one of B
+C:	And so on... you see we have a nicely amount of space for each column
+D:	We could delete columns by deleting one line (each row) compared to find the right position
+	in a hole blob of control characters and content stick together like glue and fingers.
+E:	Notice the : (read 'is') behind the columns alias (here its E) You actually can chose any 
+	upper or lower case letter (a-zA-Z) so max columns is 2x26=52 - That should be enough. 	
+|	---------------------------------------------------------------------------------------
+B	Column B in row 1 (after header)
+A	Yes you can mix up the sequence later on. The dominating sequence is the one of the header
+	or - if no header available - of the first row.
+?	----------------------------------------------------------------------------------------
+
+
+
+	REMOVING BLOCKS FROM VIEW BUT KEEP IN SOURCE
+	
+	When playing around with a documents structure, you may want to comment out a block. I think
+	therefore a block shouldn't be changes at all. Because of that we do a pre-line-code to change
+	the interpretation of the following block(s). The "comment" starts with < control-code like:
+<<<<<<<<<<
+	This is a source code part that will not be included in the view at all!
+>>>>>>>>>> 
+	The opening control character '<' can be followed by any sequence until the end of the line.
+	This is also true for the closing '>'.
+< remove this
+	This is removed from view
+> and here we are again
+	From here also in the view
+	
+	
+	
+	INSERTS AND DELETIONS
+	
+	Content can be marked as inserted by using the '+' control char. the real control code follows
+	right behind. If none (tab) it is a inserted empty line.
++	This line was inserted later on!
++[a]	This footnote was inserted as well!
+	To mark something as deleted or removed use the minus '-' control char. Note that if the '-' 
+	is followed by another minus it is not a deletion mark! Those belong to other control code 
+	sequences.
+-	Here we have deleted something. Of cause! How useless this is.
+	Note also that '-' is not a bullet item used as control code character. 
+ 
+ 
+ 	MULTI-COLUMN LAYOUTS
+	
+	Just a early draft example: 
+%50
+	This is the first column of a total of 3 having half of paper with.
+%20	
+	This is the second column got 20% with of the paper space.
+%*
+	This is the third column got 30% computed by the parser.		
+%
+	A '%' without any argument ends the multi-column section and continues with normal width. 
+
+
+
+
+	ENUMERATIONS
+	
+1.	My first point
+#.	The second - auto numbered to 2.
+
+	But also if you want to start somewhat else
+4.	The first point of this list but called #4 (4. in view)
+5.	The second called 5.
+	It has multiple lines. It ends at the following empty line or a new control code.
+	
+	But also you can indent:
+	1.	Here we go
+	2.	In a new list
+	#.	Indented by tabs
+		This allows better control of an items content since as long as you indent same depth
+		the content will be considered to belong to it.
+		
+		Here is a second paragraph in the same item as the one above.
+
+
+
+
+
+
+
+
+
+
+	------------------------------------------------------------------
+
+
+	...................................................................
+	
+
+
+	:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	
+	///////////////////////////////////////////////////////////////////
+	
+	...................................................................
+	
+	\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	
+	###################################################################
+	
+	'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	******************************************************************
+	
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	
+	------------------------------------------------------------------
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	
+	>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+						

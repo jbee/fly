@@ -1,0 +1,244 @@
+//	Version 2.0
+	Author: Jan Bernitt
+(
+	L2ML = Lightweight Logical Markup Language 
+(
+	Ziele:
+ -	Der Markup-Text soll die eigentlich logische Struktur des Dokuments bereits möglichst klar
+	wiedergeben. Das heißt, eine Person, die den Syntax nicht kennt, ist anhand der Form des
+	Markup-Textes (in monospace Darstellung) in der Lage, die grobe Struktur des Dokuments zu 
+	erkennen und eine korrekte Erwartung an eine spätere Darstellung aufzubauen.
+	Inhalt und Steuerbefehle sind dabei so klar wie möglich voneinander getrennt. Der Inahlt
+	ist von so wenigen Steuerbefehlen "verunreinigt" wie irgend möglich.
+ -	Es gibt keine physikalische Auszeichnung wie fett/kursiv. Die Struktur des Dokuments und
+ 	dessen Inhalt (bis hin zu einzelnen Wörtern) werden ausschließlich logisch gegliedert und 
+ 	markiert. Zur Darstellung können Style-Dateien (etwa CSS) definiert werden, welche den 
+ 	Konzepten (Kapitel-Überschrift, Absatz, hervorgehobenes Wort etc.) ein Design verleihen.
+ 	Logische Information und deren Darstellung werden radikal und konsequent getrennt!
+ 	Das bedeutet auch, dass !!!keine!!! zusätzlichen Angaben (vergleichbar mit class Attribute
+ 	in HTML für bestimmte Styles) möglich sein werden! Stattdessen können grundsätzlich die 
+ 	logisch markierten Inhalte so granular wie möglich angesprochen und mit einem eigenen Style
+ 	versehen werden. 
+ -	Durch die strikte Trennung von Informationsgehalt und Darstellung eines Dokuments sollen die
+ 	Inhalte darstellungsunabhängig werden, sodass alle Dokumente unabhängig ihres Authors in der 
+ 	vom aktuellen Betrachter bevorzugten Darstellung/Design angezeigt werden können. Das bedeutet
+ 	auch, das "Inhalte", die aus der eigentlichen Information des Dokuments abgeleitet werden
+ 	können (etwa Inhaltsverzeichnis) *nicht* Teil des Dokuments sondern der Darstellung sind.
+ -	HRML ist nicht zeichen sondern wort-basiert. Das heißt, es ist nicht möglich Wortteile -
+ 	also Zeichen - mit einer logischen Auszeichnung zu versehen. Sollen expliziet einzelne 
+ 	Buchstaben gesondert markiert werden, stehen diese allein (als Wort) und werden mit einem
+ 	speziellen Leerzeichen/Trenner mit dem nachfolgenden Buchstaben zusammengezogen (Glues).
+ -	HRML soll massiv das paralle Arbeiten an Dokumenten unterstützen. Ein Mittel ist, dass 
+ 	Dokumente in nahezuh beliebige Informations-Häppchen zerlegt werden können, welche jeweils in
+ 	einer eigene Datei abgelegt sind. Diese können Include-Ähnlich in andere Dokumente integriert
+ 	bzw zu diesen Zusammengefasst werden. Dabei kann die Struktur des includierten Dokuments 
+ 	gefiltert oder reinterpretiert werden. (Bestimmte Knoten entfernen oder Struktur relativ
+ 	interpretieren, etc.)
+ -	Der Syntax soll die nötigen Steuereingaben auf das nötigste reduzieren und diese sollen so
+ 	Angeordnet werden, dass gängige Änderungen mit der Anpassungen einer oder weniger Steuer-
+ 	anweisungen mögliche werden. Keine nervenden mehrzeiligen Änderungen bei gleicher Funktion  
+
+// 	Allgemein Funktionsregeln:
+ - 	Steueranweisungen stehen als 1. Zeichen einer Zeile
+ - 	Weitere Zeichen können nachfolgen, um das Steuerzeichen mit Optionen/Auswahlen zu versehen
+	Welche Optionen und Auswahlen möglich sind ist ebenfalls ferster Bestandteil der Syntax
+ -	Nach Steuerzeichen und Zusatzangaben folgt ein TAB, danach beginnt der Inhalt
+ -	Ein Block endet mit der nächsten Leerzeile oder einem neuem Steurzeichen auf selber Ebene
+ -	Verschacheltung (Ebenen) werden dargestellt, indem dem Steuerzeichen entsprechend viele 
+ 	Leerzeichen vorangehen
+ - 	Kommentare haben das Steuerzeichen // (dann Tab). Gilt wie üblich bis Leerzeile oder neuer 
+ 	Steuranweisung
+
+
+//	Struktur / Überschriften
+
+
+:
+:
+:
+:
+:
+:	Kapitel
+
+:::::	Auch ein Kapitel (aber nicht so schön)
+
+*
+*
+*
+*
+*	Noch ein Kapitel
+
+***** Und noch eines *****
+
+:
+:
+:
+:	Abschnitt
+
+::::	Auch ein Abschnitt (aber nicht so schön)
+
+:
+:
+:	Unterabschnitt
+
+:::	Auch ein Unterabschnitt (aber nicht so schön)
+
+:
+:	Ein Paragraph
+
+::	Auch ein Paragraph (Titel) (aber nicht so schön)
+
+::	Ein Paragraph
+	in mehreren Zeilen
+(	
+	welche hier noch fortgesetzt werden. Die ist kein neuer Textblock
+
+//	Überschriften bilden auch gleichzeitig die Struktur des Dokuments ab. Sie erzeugen als
+	einzige Knoten keine Einrückung ihrer Kindknoten, damit diese als solche erkannt werden. 
+
+
+
+//	Einfacher Text/Textblöcke / Paragraphen (ohne Titel)
+
+	Hier beginnt einfacher Text
+	der sich über mehrere Zeilen ersteckt. Er ghört zum jeweiligen Elternknoten, der zuletzt 
+	mit einer Steueranweisung gegonnen wurde.
+	Eine Leerzeile trennt mehrere aufeinanderfolgende Textblöcke. Mehrere Leerzeichen werden
+	funktional zu einer zusammengezogen.
+	
+	Eine Leerzeile beendet immer den jeweils vorangegangenen Knoten. 
+	Sollte dies explizit nicht gewünscht sein, kann das Steuerzeichen für
+	Zusammenzichen ( in der ansonsten leeren Zeile gesetzt werden
+	
+	  Beginnt ein Paragrahentext mit mindestens. 2 Leerzeichen (nach dem Tab) ist ein indent
+	explizit gewünscht. Per default wird jeder Paragraph nach dem 1. unterhalb des letzten Titels
+	automatisch eingerückt (erhält Style [etwa Css] für Einrückung).
+
+>	Quote (BLOCKQUOTES) orientieren sich am üblichen Quote Symbol '>' in Emails und Foren,
+	mit dem Unterschied, dass wie üblich das Steurzeichen nur in der 1. Zeile steht unnd der Quote
+	erst mit dem nächsten Steuerzeichen oder einer Leerzeile endet.
+	
+"	Wörtliche Rede sieht dann so aus
+"	Zitate werden dadurch gebildet, dass dem Text der wörtlichen Rede
+	als nächstes ein Authorenknoten angehängt wird.
+@	Jan Bernitt
+	Jede Zeile nach einer Person (@-Steuerzeichen) gehört zum selben Elternknoten wie das vor-
+	angegangene Zitat. Eine Personzeile ist immer nur 1 Zeile lang und schließt Zitatblock und 
+	Personenblock ab. Dies ist also ein normaler Textblock nach dem Zital mit selben Elternknoten
+	wie das Zitat.
+	
+_______________________
+
+[#]	Eine automatisch nummerierte Fußnote - Üblicherweise wird dort ein Begriff näher erläutert 
+	dann sieht das so aus, wie bei der nachfolgenden Fußnote
+[#]	
+ !	James Bond
+ =	Eine Figur eines Geheimagenten des britischen MI6
+[3]	Es kann aber auch eine Nummer vorgegeben werden. Diese wird beim durchzählen der automatischen
+	Fußnoten entsprechend übersprungen. Dennoch kann es zu Kollisionen führen, wenn Dokumenten-(Teile)
+	mit einer Fußnote mit selber nummer importiert werden.
+
+//	Aufzählungen 
+*	1. Aufzählungspunkt (Bullet)
+*	2. AP (Bullet)
++	1. AP (Bullet)
+- 	1. AP (Bullet)
+1.	1. AP (1., 2., 3. Nummer = default)
+2.	2. AP (2. - keine weitere Angabe des Typs nötig - 1. AP bestimmt Typ - Typwechsel bedeutet neue Aufzählung
+A.	1. AP (A., B., C. ...H) oder alles nach I bis Z, über # auch mehr als bis i von a aus
+A)	1. AP (A), B), C) ...H)
+a.	1. AP (a., b., c. ...h) oder alles nach i bis z
+a)	1. AP klar
+4.	1. AP aber beginnend bei 4.
+5.	2. AP (hier 5.)
+
+#.	1. AP (setzt jedoch den in der Struktur direkt vorangehenden AP (selben Typs (Nummer) fort.
+	Also hier wird es zu 6.	So können Aufzählungen auch mit anderen Knoten unterbrochen werden	
+I.	1. AP (Römische Zahlen I, II, III ...)
+i.	1. AP römische Zahlen i, ii, iii
+
+//	Aufzählungen und Schachtelung
+*	1. AP 
+ *	1. Unterpunkt
+ *	2. UP
+-	1. AP (Strich)
+ -	1. UP
+ - 	2. UP
+#	1. AP
+ *	1. UP
+ *	2. UP
+ #	1. UP 
+
+// 	Aufzählungen über mehrere Zeilen
+* 	1. AP
+	Hier geht der Text des 1. AP weiter, weil keine neue Steueranweisung vorangeht
+	genauso wie hier...
+*	2. AP
+	Und noch mehr Text für den 2. AP
+(	
+	Dieser kann auch mehrere Paragraphen haben, wenn der Text über ( zusammengezogen wird
+	
+//	Definitionslisten
+!	Definitionsbegriff
+=	Definition des Begriffs - Dies ist kein Unterknoten des Begriffsknotens!
+ 	Der sich natürlich genauso wieder über mehrere Zeilen erstecken kann
+ *	Und auch Aufzählungen verwenden kann, um erklärt zu werden.
+ 
+
+//	Tabellen
+ - 	Grundsätzlich werden leere Zellen einfach nicht genannt. Ein lästiges Zählen entfällt.
+ -	Ind er erste Zeile werden den Spalten Namen (A-Z) gegeben, dies Reihenfolge im Markup ist 
+ 	relevant für die tatsächliche Reihenfolge der Spalten - nicht die Namen!
+  	So können Spalten komplett verschoben werden, indem lediglich im Kopf die Reihenfolge 
+ 	vertauscht wird. Es müssen nicht zwingend Head-Zellen sein. 
+ -	Die Body-Zellen referenzieren über den Namen, zu welcher Spalte sie gehören
+ 	Die Reihenfolge ist hier beliegig und darf auch über verschiedene Zeilen variieren.
+ - 	Tabellen sind Strukturelemente, das heißt sie können nicht in Texten eingeschachtelt werden.
+ 	Als solche schließen Leerzeilen auch nicht die Tabelle ab!
+ -	Head-Zellen (th) werden mit ! vor ihrem Namen markiert
+
+|-	Steht hier Text wird das zur Caption der Tabelle
+|!A	Kopf Spalte 1
+|!B2	Kopf Spalte 2 (+3), da sich diese über 2 Spalten erstreckt
+|!C	Kopf Spalte 4
+|	
+|A	Inhalt Zeile 1 Spalte 1
+|C	Inhalt Zeile 1 Spalte 4
+|
+|B	Inhalt Zeile 2 Spalte 2+3
+|
+|B1	Inhalt Zeile 3 Spalte 2
+|B2	Inhalt Zeile 3 Spalte 3
+|C	Inhalt Zeile 3 Spalte 4	
+|
+|A	Inhalt Zeile 4 Spalte 1
+	Der über mehrere Zeilen geht
+  	
+	Hier sogar einen neuen Absatz beginnt
+|-	Steht hier Text, wird das zur Legende bzw Unterschrift der Tabelle (neben der Abb. Nr)
+
+ 
+// 	Seiten / Layout
+ 
+ Solle eine 
+ 
+ //	Umbrüche, 1-2-3 Spaltig etc.
+ 
+ 
+ // 	DSL Support für etwa Konzepte wie Rot/Grün/Blau in den Google IO Folien 
+ 
+ 
+ // 	Übersichts-Inhalte wie jegliche Art von Verzeichnissen wie Inhalts, Literatur, Abbildungs- 
+ 	und Tabellenverzeichnissen sind nicht Teil des eigentlichen Contents 
+ 
+ //	Editor
+ //	Mit JS einen interaktiven Editor bauen, der das Markup sofort in HTML darstellt
+ //	Dieser hat 2 "Spalten"
+ //	1. für den Steuerbereich - bei Tab gehts rüber in den Inhaltsbereich - man kennt schon, wie es
+ //	Aussehen soll
+ //	2. für den Inhalt - wird über CSS gleich so dargestellt wie es aussehen würde/wird.-->GOIL
+ //	bei Enter gehts wieder in den Steuerbereich
+ 
+ 
+ // 	IDEEN
+ 	UPPER CASE mit direkt nachfolgenden : in verschiedenen Situationen interpretieren. Etwa als Paragraph-Titel 

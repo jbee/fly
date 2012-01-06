@@ -1,0 +1,88 @@
+html {
+	height: 100%;
+	background-color: #ddd;
+	margin: 0;
+	padding: 0;
+}
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+h1 {
+	font-family: monospace;
+	letter-spacing: -0.1em;
+	font-size: 24pt;
+	font-weight: normal;	
+	margin: 0;
+}	
+h3 {
+	font-family: sans-serif;
+	letter-spacing: -1px;
+	margin-bottom: 0;	
+}
+	
+#site {
+	margin: 0 auto;
+	padding: 0;
+	height: 100%;
+	width:90%;
+}
+.markup, .active {
+	background-color: #D1F6FC;
+}	
+#cursor {
+	color: white;	
+}	
+.fourty {
+	float: left;
+	margin: 0;
+	margin-right: 2%;
+	height: 80%;
+	width: 46%;
+}	
+
+.page {
+	margin: 0;
+	list-style-type: none;
+	background-color: white;
+	border: 1px outset #ccc;
+	min-height: 80%;
+	display: block;
+	width: 61%;
+	padding: 10%;
+}	
+.editor {
+	font-family: monospace;
+	border: 1px outset #ccc;
+	padding: 0;
+	min-height: 80%;
+	display: block;
+	background-color: white;
+	margin: 0;
+}
+.markup {
+	list-style-type: disc;
+	list-style-position: outside;
+	padding: 0;
+	margin: 0;
+	border-left: 3em solid #eee;
+}
+
+.markup li {
+	color: #aaa;
+	white-space: -moz-pre-wrap; /* Mozilla, supported since 1999 */
+	white-space: -pre-wrap; /* Opera 4 - 6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	white-space: pre-wrap; /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
+	word-wrap: break-word; /* IE 5.5+ */
+	text-indent: -2em;
+	padding-left: 2em;
+	background-color: white;
+}
+.markup li code {
+	color: black;	
+}	
+.markup li em {
+	background-color: #D6FFBF;	
+}

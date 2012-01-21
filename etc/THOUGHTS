@@ -1,3 +1,10 @@
+2012-01-20
+	EDITING EXISTING DOCUMENTS
+	  It must be possible to tell safely which lines following the edited one has to be processed 
+	too to finish the locgical/contextual block element the edited line is contained in so that
+	just a small amount of line has to be processed on every keystroke during the editing.
+
+2011-??-??
 # 	Es ist problematisch wenn blöcke optionale Leerzeilen am Ende erlauben, da dann kein klares Ende 
 	und somit auch kein klarer Anfang des nächsten feststeht. Das kompliziert das Parsen erhablich.
 
@@ -38,3 +45,46 @@
 
 #	So problemeatisch sind optionale Leerzeilen am Ende wohl doch nicht, wenn man diese im
 	beendeted und im nachfolgenden Block als eine Art "Shared"-Anzahl versteht. 
+	
+	
+
+
+
+
+
+
+
+
+
+	------------------------------------------------------------------
+
+
+	...................................................................
+	
+
+
+	:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	
+	///////////////////////////////////////////////////////////////////
+	
+	...................................................................
+	
+	\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	
+	###################################################################
+	
+	'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+	
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	******************************************************************
+	
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	
+	------------------------------------------------------------------
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+	
+	>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

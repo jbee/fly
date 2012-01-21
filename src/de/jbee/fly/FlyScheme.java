@@ -3,7 +3,9 @@ package de.jbee.fly;
 import de.jbee.io.ICharReader;
 
 /**
- * A kind of factory for {@link ITitanText}.
+ * Transforms a physical document (markup) made of lines, words and characters to a logical document
+ * made of parts, chapters, sections, paragraphs, enumerations, lists, tables, images, figures and
+ * so on.
  * 
  * @author Jan Bernitt (jan.bernitt@gmx.de)
  * 
@@ -16,6 +18,8 @@ public interface FlyScheme {
 	// der autor selbst ein schema erzwingen kann (der doctype könnte bereits dieses markup nutzen)
 
 	void process( ICharReader in, FlyProcessor out );
+
+	// statt des readers das dokument als eingabe, welches an einer bestimmten position bearbeitet wird ?
 
 	// vielleicht ist ein schema auch ein art scanner, welcher ein prozessor bekommt:
 	// sicher sogar: denn so ist nur ein return typ möglich - es wäre besser hier flexieber zu sein

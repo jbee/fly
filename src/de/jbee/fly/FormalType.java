@@ -1,6 +1,8 @@
 package de.jbee.fly;
 
-public enum FormalType {
+// get rid of this completely ?
+
+public enum FormalType { // PhysicalType ?
 
 	DOCUMENT,
 
@@ -17,4 +19,8 @@ public enum FormalType {
 	 * change during the section.
 	 */
 	SECTION,
+
+	LINE, // ????
+	WORD, // ????
+	;
 }

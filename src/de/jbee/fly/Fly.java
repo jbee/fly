@@ -2,7 +2,7 @@ package de.jbee.fly;
 
 /**
  * <pre>
- *  FLY: Fluent Yadda (Yadda Yadda)
+ *  FLY: FLuent Yadda (Yadda Yadda)
  * </pre>
  * 
  * @author Jan Bernitt (jan.bernitt@gmx.de)

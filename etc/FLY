@@ -20,7 +20,7 @@ _	______________________________________________________________________________
 	A SHORT INTRODUCTION OF SYNTAX
 	
 	
-	''Ateno'' allows you to write down your documentation like there is no markup which creates
+	''FLY'' allows you to write down your documentation like there is no markup which creates
 	a nice view later one. The source should already look as readable and clear as possible. 
 	  It should show the structure of your document as well as the different types of
 	content like headlines, paragraphs, list, tables or code-block to just mention the most common.
@@ -34,8 +34,8 @@ _	______________________________________________________________________________
 	to use the few possibilities simple monospaced texts offer to express yourself quite clear to
 	the reader. 
 	
-	With this in mind one big difference between ''Ateno'' and other markup languages is not
-	surprising any longer: The markup of ''Ateno'' is often ambiguous. It has to since we all
+	With this in mind one big difference between ''FLY'' and other markup languages is not
+	surprising any longer: The markup of ''FLY'' is often ambiguous. It has to since we all
 	would do things a little different but mean the same thing. So we can express ourself in the
 	biggest range technically possible. Note that the ambiguousness doesn't mean the same markup 
 	could mean too things. We can just choose different ways to tell the same story.
@@ -300,13 +300,13 @@ START WITHOUT TAB OR CONTROL CODE
 	Trough this it can happen, that you end a line in the source with a line-break and continue
 	very left of the text. The source didn't has a space between the last word and the fist in
 	the line after. This would cause them to stick together in the view in most markup systems.
-	That's different in ''Ateno''! The worlds look as they should divided by a space. So there
+	That's different in ''FLY''! The worlds look as they should divided by a space. So there
 	is no need to find yourself indenting a word by one space at the beginning of a line in your
 	source. If you want words to stick together simply put them on one line.  
 	
 
 
-	PREFORMATTED OR CODE BLOCK
+	VERBATIM / PREFORMATTED OR CODE BLOCK
 
 	A good support for preformatted block is very very important since mostly markup languages are
 	used by 'experts' to document their API, ideas or whatever. I find it most important that
@@ -326,11 +326,11 @@ START WITHOUT TAB OR CONTROL CODE
 	Open is much longer and thereby its easy to tell which is open and close
 	___________________________________________________________
 
-	You often find yourself left with	a poor support for simple code blocks just allow to 
+	You often find yourself left with a poor support for simple code blocks just allow to 
 	toggle interpretation of markup completely. This is often not enough to satisfy the needs of
 	good documentation. Often you want or need to point out to words, lines or positions in a
 	preformatted block. You want to highlight em in some way. That shouldn't be to difficult or
-	even impossible to do. So here is how it is done in ''PurelyIT'':
+	even impossible to do. So here is how it is done in ''FLY'':
 	
 	__________________________________________________________________
 1
@@ -342,6 +342,16 @@ START WITHOUT TAB OR CONTROL CODE
 		}
 	__________________________________________________________________
 
+	LINE NUMBERS
+	  To get line numbers automatically (auto-numbering) use '...' after the initial line number 
+	like in this example
+	__________________________________________________________________
+1...	
+	this will be line 2
+	and 3
+	and 4
+	__________________________________________________________________
+	
 
 	MARKS
 	Marks can be used to point at a specific line of a listing. They use the open square bracket [ 

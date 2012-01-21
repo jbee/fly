@@ -1,7 +1,9 @@
 package de.jbee.fly;
 
 /**
- * A formal content view of text (a document).
+ * A formal view a text's (document's) content.
+ * 
+ * What kind of structure and elements do I see when I look at the text.
  * 
  * @author Jan Bernitt (jan.bernitt@gmx.de)
  */
@@ -62,15 +64,15 @@ public enum ContentType {
 	 * A appendix can be used in different ways:
 	 * 
 	 * As a top level element it is a special document part known (and often titled) as 'Appendix'.
+	 * Use {@link #SECTION}s as children to model 'Appendix A, B, C'.
 	 * 
 	 * When nested into a {@link #PART}, {@link #CHAPTER}, {@link #SECTION}, {@link #SUBSECTION} or
-	 * {@link #PARAGRAPH} it contains the footnotes of the parent modeled through {@link #NOTE}s.
-	 * The notes itself my again contain multiple {@link #PARAGRAPH}s.
+	 * {@link #PARAGRAPH} it contains the (foot)notes of the parent modeled through {@link #NOTE}s.
 	 */
 	APPENDIX,
 
 	/*
-	 * Basic Elements
+	 * Basic (substance) Elements
 	 */
 
 	/**
@@ -91,7 +93,8 @@ public enum ContentType {
 	/**
 	 * A legend, footnote, side note or similar.
 	 * 
-	 * A note can contain multiple {@link #PARAGRAPH}s.
+	 * A note can contain multiple {@link #CAPTION}s and {@link #PARAGRAPH}s. Each of them again can
+	 * be annotated with a note.
 	 */
 	NOTE,
 
@@ -104,16 +107,34 @@ public enum ContentType {
 	VERBATIM,
 
 	/*
-	 * Invisible Non-Textual Elements
+	 * Non-Textual Elements
 	 */
 
 	/**
-	 * A textual reference to external content that is included in the view later.
+	 * A hint how to understand the text/markup like a page-break or vertical space.
+	 * 
+	 * Line-breaks are special since they are already translated into a sequence of
+	 * {@link #PARAGRAPH}s when the document tree is created.
+	 */
+	HINT,
+
+	/**
+	 * A parting line or something similar.
+	 */
+	SEPARATOR,
+
+	/**
+	 * A link (textual reference) to external content (no FLY-document) that is included by the
+	 * viewer properly. This are all types of image or foreign format files like JPG, PNG, PDF and
+	 * so on.
 	 */
 	INCLUDE,
 
 	/**
-	 * A hint how to understand the text/markup like a page-break or line-break.
+	 * The subtree is physically stored in another FLY-document source (e.g. another file)
+	 * 
+	 * A import can predefine what kind of block node the 'top level' of the imported elements will
+	 * be.
 	 */
-	HINT,
+	INPORT,
 }

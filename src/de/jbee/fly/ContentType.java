@@ -119,7 +119,7 @@ public enum ContentType {
 	HINT,
 
 	/**
-	 * A parting line or something similar.
+	 * A parting line, triple asterisk, dingbat symbol or something similar.
 	 */
 	SEPARATOR,
 

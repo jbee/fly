@@ -23,7 +23,7 @@ _	______________________________________________________________________________
 	''FLY'' allows you to write down your documentation like there is no markup which creates
 	a nice view later one. The source should already look as readable and clear as possible. 
 	  It should show the structure of your document as well as the different types of
-	content like headlines, paragraphs, list, tables or code-block to just mention the most common.
+	content like headlines, paragraphs, list, tables or code-blocks to just mention the most common.
 	  
 	  But the readability is not the goal. It's the way to reach the goal: To document as good and
 	fast as possible without the need to remember weird markup sequences that clutter up all over
@@ -38,21 +38,23 @@ _	______________________________________________________________________________
 	surprising any longer: The markup of ''FLY'' is often ambiguous. It has to since we all
 	would do things a little different but mean the same thing. So we can express ourself in the
 	biggest range technically possible. Note that the ambiguousness doesn't mean the same markup 
-	could mean too things. We can just choose different ways to tell the same story.
+	could mean too things (in one place). We can just choose different ways to tell the same story
+	(but at another position in the document the same markup might be anther thing too).
 	
 	
 	
 	FROM THE HEADLINE DOWN TO PARAGRAPHS
 	
 	A big structure like a chapter is introduced by 4-6 blank lines prepended to the heading and
-	followed by any number of blank lines greater 1. So you can easily emphasize it as much as
-	you think it needs to.
-	In general the text written in the source document will not break in the view where is does
+	followed by any number of blank lines greater 1 and less than or equal to the introducing ones 
+	to keep the headline stick more close to the text its heading. Thereby you can easily 
+	emphasize it as much as you think it needs to.
+	  In general the text written in the source document will not break in the view where is does
 	in the source (behaves like in HTML). You have to enforce line-breaks by mark their position. 
   	  Just indent a line by at least two spaces. You can put as much as you desire to. This will
   	make the view also show a new line at that position in the text.
 
-	  To do a complete new text block (paragraph) use a blank line before the text. Also
+	  To do a complete new text block (block paragraph) use a blank line before the text. Also
 	indent its first line by at least 2 spaces (no tabs!) to distinct it from a heading as we will 
 	see later on. You can also use this space indent to enforce new lines. The reason 1 space is
 	just a space and doesn't do same trick is that you might have pasted texts that break in the
@@ -62,7 +64,7 @@ _	______________________________________________________________________________
 	causes to start at a new line.
 
 	One may argue that a not indented block with more than too lines not appears as a headline to
-	a human. And you are tight. If a block of text has more than 2 lines in the source it is
+	a human. And you are right. If a block of text has more than 2 lines in the source it is
 	automatically a paragraph. If you want to do a headline with more than 2 lines use one of
 	the unambiguous markups (e.g. put spaces as control code). So in fact it is not nessessay to
 	indent this block nor the one above. But its still good style to do so since it makes your 
@@ -149,6 +151,15 @@ _20%	___________________________________________________________________________
 	as long as you line keeps at least 40 characters width. But be careful with tabs there. 
 	It might do no difference but it can if you are inside nested blocks like bullet lists.
 	
+	PARAGRAPH SEPARATION
+	In books often one or a triple asterisk is used to separate two paragraphs when there is a 
+	change of sense or time between them. Sometimes other characters like an asterism or a dingbat 
+	symbol are used too. Here is a example:
+		
+								***
+								
+	Note that those dividers may use between zero and two empty line before and after to create
+	the separating effect also in the source document.
 	
 	FOOTNOTES
 	  A footnote is logically a quite complicated element. The reason is that footnotes have to appear 

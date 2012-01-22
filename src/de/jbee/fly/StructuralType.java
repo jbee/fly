@@ -3,11 +3,11 @@ package de.jbee.fly;
 /**
  * A formal view a text's (document's) content.
  * 
- * What kind of structure and elements do I see when I look at the text.
+ * What kind of structure and elements do I recognize when I look at the (source) text.
  * 
  * @author Jan Bernitt (jan.bernitt@gmx.de)
  */
-public enum ContentType {
+public enum StructuralType {
 
 	/*
 	 * Block Elements
@@ -18,6 +18,9 @@ public enum ContentType {
 	 * 
 	 * Parts are always just top level elements in a document (if present). They cannot be nested or
 	 * contained in any of the other types.
+	 * 
+	 * Parts also used to model the different block of a document like a title-page, TOC, abstract,
+	 * indices and appendix.
 	 */
 	PART,
 
@@ -33,12 +36,14 @@ public enum ContentType {
 	SECTION,
 
 	/**
-	 * A subsection has to be a direct child of a {@link #SECTION}. Further nested subsections can
-	 * be modeled by nesting a subsection into another {@link #SUBSECTION} element.
+	 * A subsection has to be a direct child of a {@link #SECTION} (or subsection). Further nested
+	 * subsections can be modeled by nesting a subsection into another {@link #SUBSECTION} element.
 	 * 
 	 * In contrast to a {@link #PARAGRAPH} a sub-section is a block element that may have multiple
-	 * child nodes. In contract to a {@link #SECTION} a sub-section often has no {@link #CAPTION}
-	 * element as first child.
+	 * child nodes like a {@link #CAPTION} and/or {@link #PARAGRAPH}s.
+	 * 
+	 * In contract to a {@link #SECTION} a sub-section is *not* a valid top-level element. Often it
+	 * has no {@link #CAPTION} child.
 	 */
 	SUBSECTION,
 
@@ -59,17 +64,6 @@ public enum ContentType {
 	 * As direct child of an {@link #ITEMISATION} it integrates all its children as one 'item'.
 	 */
 	ITEM,
-
-	/**
-	 * A appendix can be used in different ways:
-	 * 
-	 * As a top level element it is a special document part known (and often titled) as 'Appendix'.
-	 * Use {@link #SECTION}s as children to model 'Appendix A, B, C'.
-	 * 
-	 * When nested into a {@link #PART}, {@link #CHAPTER}, {@link #SECTION}, {@link #SUBSECTION} or
-	 * {@link #PARAGRAPH} it contains the (foot)notes of the parent modeled through {@link #NOTE}s.
-	 */
-	APPENDIX,
 
 	/*
 	 * Basic (substance) Elements
@@ -93,6 +87,8 @@ public enum ContentType {
 	/**
 	 * A legend, footnote, side note or similar.
 	 * 
+	 * The note-element describes the kind of note.
+	 * 
 	 * A note can contain multiple {@link #CAPTION}s and {@link #PARAGRAPH}s. Each of them again can
 	 * be annotated with a note.
 	 */
@@ -111,7 +107,8 @@ public enum ContentType {
 	 */
 
 	/**
-	 * A hint how to understand the text/markup like a page-break or vertical space.
+	 * A hint how to understand and/or visualize the text/markup like a page-break or vertical
+	 * space.
 	 * 
 	 * Line-breaks are special since they are already translated into a sequence of
 	 * {@link #PARAGRAPH}s when the document tree is created.
@@ -119,7 +116,7 @@ public enum ContentType {
 	HINT,
 
 	/**
-	 * A parting line, triple asterisk, dingbat symbol or something similar.
+	 * A footnote- or parting-line, triple asterisk, dingbat symbol or something similar.
 	 */
 	SEPARATOR,
 

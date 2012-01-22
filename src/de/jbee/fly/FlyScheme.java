@@ -7,6 +7,9 @@ import de.jbee.io.ICharReader;
  * made of parts, chapters, sections, paragraphs, enumerations, lists, tables, images, figures and
  * so on.
  * 
+ * There is a global scheme controlling the switch between the special schemes used for parts or
+ * special purpose elements.
+ * 
  * @author Jan Bernitt (jan.bernitt@gmx.de)
  * 
  */

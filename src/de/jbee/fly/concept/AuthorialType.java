@@ -1,4 +1,4 @@
-package de.jbee.fly;
+package de.jbee.fly.concept;
 
 public enum AuthorialType {
 

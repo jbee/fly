@@ -3,7 +3,8 @@ package de.jbee.fly;
 /**
  * A formal view a text's (document's) content.
  * 
- * What kind of structure and elements do I recognize when I look at the (source) text.
+ * What kind of structural elements can I recognize when looking at the (source) document ? Those
+ * are described by a tree of nodes each having one off the types of this enum.
  * 
  * @author Jan Bernitt (jan.bernitt@gmx.de)
  */
@@ -14,7 +15,7 @@ public enum StructuralType {
 	 */
 
 	/**
-	 * E.g. a book part. *NOT* at document part.
+	 * E.g. a book part.
 	 * 
 	 * Parts are always just top level elements in a document (if present). They cannot be nested or
 	 * contained in any of the other types.

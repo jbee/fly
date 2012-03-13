@@ -31,16 +31,16 @@ public class TestCohesion {
 		Probability p60 = probability( 60 );
 		Probability p70 = probability( 70 );
 		Probability p55 = probability( 55 );
-		assertThat( c1.probability( new Char( 'H', 0 ), zero ), is( p50 ) );
-		assertThat( c1.probability( new Char( 'a', 1 ), p50 ), is( p60 ) );
-		assertThat( c1.probability( new Char( '1', 1 ), p50 ), is( zero ) );
-		assertThat( c1.probability( new Char( 'l', 2 ), p60 ), is( p70 ) );
+		assertThat( c1.appraise( new Char( 'H', 0 ), zero ), is( p50 ) );
+		assertThat( c1.appraise( new Char( 'a', 1 ), p50 ), is( p60 ) );
+		assertThat( c1.appraise( new Char( '1', 1 ), p50 ), is( zero ) );
+		assertThat( c1.appraise( new Char( 'l', 2 ), p60 ), is( p70 ) );
 		Cohesion c2 = upTo( 0, required( ucl50 ), required( lcl10 ) );
-		assertThat( c2.probability( new Char( 'H', 0 ), zero ), is( p50 ) );
-		assertThat( c2.probability( new Char( 'a', 1 ), p50 ), is( p60 ) );
-		assertThat( c2.probability( new Char( '1', 1 ), p50 ), is( impossible ) );
-		assertThat( c2.probability( new Char( 'l', 2 ), p60 ), is( p70 ) );
+		assertThat( c2.appraise( new Char( 'H', 0 ), zero ), is( p50 ) );
+		assertThat( c2.appraise( new Char( 'a', 1 ), p50 ), is( p60 ) );
+		assertThat( c2.appraise( new Char( '1', 1 ), p50 ), is( impossible ) );
+		assertThat( c2.appraise( new Char( 'l', 2 ), p60 ), is( p70 ) );
 		Cohesion c3 = upTo( 0, ucl50, upTo( 2, lcl10, lclm5 ) );
-		assertThat( c3.probability( new Char( 'l', 3 ), p60 ), is( p55 ) );
+		assertThat( c3.appraise( new Char( 'l', 3 ), p60 ), is( p55 ) );
 	}
 }

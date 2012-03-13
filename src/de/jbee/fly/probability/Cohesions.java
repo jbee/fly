@@ -73,7 +73,7 @@ public class Cohesions {
 		}
 
 		@Override
-		public Probability probability( Char character, Probability previous ) {
+		public Probability appraise( Char character, Probability previous ) {
 			return value;
 		}
 	}
@@ -91,9 +91,9 @@ public class Cohesions {
 		}
 
 		@Override
-		public Probability probability( Char character, Probability previous ) {
-			return one.probability( character, previous ).lower(
-					other.probability( character, previous ) );
+		public Probability appraise( Char character, Probability previous ) {
+			return one.appraise( character, previous ).lower(
+					other.appraise( character, previous ) );
 		}
 
 	}
@@ -111,9 +111,9 @@ public class Cohesions {
 		}
 
 		@Override
-		public Probability probability( Char character, Probability previous ) {
-			return one.probability( character, previous ).higher(
-					other.probability( character, previous ) );
+		public Probability appraise( Char character, Probability previous ) {
+			return one.appraise( character, previous ).higher(
+					other.appraise( character, previous ) );
 		}
 
 	}
@@ -133,10 +133,10 @@ public class Cohesions {
 		}
 
 		@Override
-		public Probability probability( Char character, Probability previous ) {
+		public Probability appraise( Char character, Probability previous ) {
 			return character.layerIndex() <= index
-				? lessThanOrEqual.probability( character, previous )
-				: greaterThan.probability( character, previous );
+				? lessThanOrEqual.appraise( character, previous )
+				: greaterThan.appraise( character, previous );
 		}
 
 	}
@@ -154,8 +154,8 @@ public class Cohesions {
 		}
 
 		@Override
-		public Probability probability( Char character, Probability previous ) {
-			return increased.probability( character, previous.plus( increment ) );
+		public Probability appraise( Char character, Probability previous ) {
+			return increased.appraise( character, previous.plus( increment ) );
 		}
 	}
 
@@ -170,7 +170,7 @@ public class Cohesions {
 		}
 
 		@Override
-		public Probability probability( Char character, Probability previous ) {
+		public Probability appraise( Char character, Probability previous ) {
 			return type.isMember( character )
 				? previous
 				: Probability.zero;
@@ -191,8 +191,8 @@ public class Cohesions {
 		}
 
 		@Override
-		public Probability probability( Char character, Probability previous ) {
-			return limited.probability( character, previous ).atLeast( minimum );
+		public Probability appraise( Char character, Probability previous ) {
+			return limited.appraise( character, previous ).atLeast( minimum );
 		}
 
 	}
@@ -208,8 +208,8 @@ public class Cohesions {
 		}
 
 		@Override
-		public Probability probability( Char character, Probability previous ) {
-			return terminable.probability( character, previous ).terminable();
+		public Probability appraise( Char character, Probability previous ) {
+			return terminable.appraise( character, previous ).terminable();
 		}
 
 	}
@@ -225,8 +225,8 @@ public class Cohesions {
 		}
 
 		@Override
-		public Probability probability( Char character, Probability previous ) {
-			return interminable.probability( character, previous ).interminable();
+		public Probability appraise( Char character, Probability previous ) {
+			return interminable.appraise( character, previous ).interminable();
 		}
 
 	}

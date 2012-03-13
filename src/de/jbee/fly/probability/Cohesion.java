@@ -2,6 +2,6 @@ package de.jbee.fly.probability;
 
 public interface Cohesion {
 
-	Probability probability( Char character, Probability previous );
+	Probability appraise( Char character, Probability previous );
 
 }

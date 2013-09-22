@@ -8,14 +8,6 @@
 # 	Es ist problematisch wenn blöcke optionale Leerzeilen am Ende erlauben, da dann kein klares Ende 
 	und somit auch kein klarer Anfang des nächsten feststeht. Das kompliziert das Parsen erhablich.
 
-# 	Der Parser sollte arbeiten wie beim JSON - wenn man nicht weiß wo man ist, kommt der 
-	allgemeinste Parser, sobald dieser bestimmt hat, um welchen Block es sich handelt, wird in CPS
-	Manier der entsprechende Block-Parser verwendet.
-
-#	Block-Parser werden für ein Block-Start registriert (bei Fabrik). Es sind durchaus 
-	Doppelbelegungen möglich. Dann wird Zeichen für Zeichen an alle Kandidaten gereicht, welche 
-	dann prüfen müssen, ob es sich immernoch um diesen Block handeln kann. 
-
 # 	Innerhalb eines Block-Pasers kann es Inline-Parser geben für fett/kursiv etc. 
 
 #	Blöcke haben eine Gewichtung, so dass aus einer Liste von Blöcken dessen Baum-Struktur 
